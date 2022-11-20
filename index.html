@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>Shopping cart</title>
+</head>
+<body>
+    <nav>
+        <h2 class="nav-text">Diyar</h2>
+        <span class="shopping-cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </span>
+    </nav>
+    <div class="text"><h2>Clothes</h2>
+        <span><input placeholder='Search...' type="text" id="search"/></span>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <h2 class="men-clothes">Мужчинам</h2>
+            <ul class="clothes-types">
+                <li class="outer-wear">Верхняя одежда</li>
+                <li class="pants">Брюки</li>
+            </ul>
+            <h2 class="women-clothes">Женщинам</h2>
+            <ul class="clothes-types">
+                <li class="dress">Платья</li>
+                <li class="skirt">Юбки</li>
+            </ul>
+        </div>
+        <div class="clothes-grid"></div>
+        <div class="shopping-basket">
+                <div class="remove-btn-div">
+                    <button class="remove">X</button>
+                </div>
+                <div class="shopping-basket-text">Корзина</div>
+                <div class="added-elements"></div>
+                <div class="total-price">Общее: 0 </div>
+                <div class="buy-btn"><button>Купить</button></div>
+        </div>
+    </div>
+    
+    <script src="index.js" type="module"></script>
+</body>
+</html>
