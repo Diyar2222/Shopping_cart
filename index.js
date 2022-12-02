@@ -15,6 +15,7 @@ let headerText = document.querySelector('.text')
 let buyButton = document.querySelector('.buy-btn')
 let totalPrice = 0
 let basket = JSON.parse(localStorage.getItem('shopping')) || []
+let showClothesFilter = Array.from(document.querySelectorAll(".clothes-types"))
 
 //adding clothes to main screen from data.js
 function addClothes(){
@@ -34,7 +35,7 @@ searchClothes.addEventListener('input',(e)=>{
         }
 })
 })
-//HTML for filter clothes and on first load of page
+//HTML for filter clothes, get them on first load of page
 function newHTML(elem){
     container.innerHTML += "<div id='"+ elem.id+ "'class='clothes'><img class='image' src='"
     +elem.img+"'></img>"+"<span class='price-span'>"+elem.price+" тг"+"</span>"+
@@ -52,12 +53,28 @@ headerText.addEventListener('click',()=>{
 //filter for men clothes
 menClothes.addEventListener('click',filterMenClothes)
 function filterMenClothes(){
-    container.innerHTML=""
-    clothes.forEach(elem => {
+    if(window.screen.width>500){
+        container.innerHTML=""
+        clothes.forEach(elem => {
         if(elem.gender==="men"){
             newHTML(elem)
         }
+        for(let key in showClothesFilter){
+            if(showClothesFilter[key].classList.contains('men')){
+                showClothesFilter[key].classList.remove('show-clothes')
+            }
+        }
     })
+    }
+    if(window.screen.width<=500){
+        filterMenAndWomenClothes = true
+        for(let key in showClothesFilter){
+                if(showClothesFilter[key].classList.contains('men')){
+                    showClothesFilter[key].classList.toggle('show-clothes')
+            }
+            
+        }
+    }
     addBtn()
 }
 //filter for outer wear
@@ -85,12 +102,26 @@ function filterPants(){
 //filter for women clothes
 womenClothes.addEventListener('click',filterWomenClothes)
 function filterWomenClothes(){
-    container.innerHTML=""
-    clothes.forEach(elem => {
+    if(window.screen.width>500){
+        container.innerHTML=""
+        clothes.forEach(elem => {
         if(elem.gender==="women"){
             newHTML(elem)
         }
+        for(let key in showClothesFilter){
+            if(showClothesFilter[key].classList.contains('women')){
+                showClothesFilter[key].classList.remove('show-clothes')
+            }
+        }
     })
+    }
+    if(window.screen.width<=500){
+        for(let key in showClothesFilter){
+            if(showClothesFilter[key].classList.contains('women')){
+                showClothesFilter[key].classList.toggle('show-clothes')
+            }
+        }
+    }
     addBtn()
 }
 //filter for skirts
@@ -171,8 +202,7 @@ function settingElements(){
         let a = basket.filter(elem => elem.id == id) // a - the element we decrementing, filtered from basket
         a[0].num = number
         localStorage.setItem("shopping",JSON.stringify(basket))
-    }
-            
+    }  
     //delete element from basket
     function removeElement(){
         let id = event.target.parentElement.id
